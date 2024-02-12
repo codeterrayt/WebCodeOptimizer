@@ -2,14 +2,15 @@ from css_html_js_minify import process_single_html_file, process_single_js_file,
     process_single_css_file
 import os
 import shutil
+import sys
 
 
 def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Optimized Code/"):
 
-    try:
-        shutil.rmtree(CLONE_CODE_DIRECTORY)
-    except:
-        pass
+
+    if os.path.isdir(REAL_CODE_DIRECTORY) == False:
+        print(REAL_CODE_DIRECTORY+" Directory Not Exists")
+        return 
 
     shutil.copytree(REAL_CODE_DIRECTORY, CLONE_CODE_DIRECTORY)
 
@@ -61,4 +62,9 @@ def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Opti
     print("Total Real Code File Size:",total_real_filesize,"MB")
     print("Compressed Code File Size:",total_filesize_difference,"MB")
 
-OptimizeCode(REAL_CODE_DIRECTORY="code")
+print(sys.argv)
+
+if(len(sys.argv) >= 3):
+    OptimizeCode(sys.argv[1],sys.argv[2])
+else:
+    print("Please Enter Proper Arguments: source_folder destination_folder")
