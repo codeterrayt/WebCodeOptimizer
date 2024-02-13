@@ -7,10 +7,12 @@ import sys
 
 def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Optimized Code/"):
 
-
     if os.path.isdir(REAL_CODE_DIRECTORY) == False:
         print(REAL_CODE_DIRECTORY+" Directory Not Exists")
         return 
+    elif os.path.isdir(CLONE_CODE_DIRECTORY) == True:
+        print(CLONE_CODE_DIRECTORY+" Directory Already Exists")
+        return
 
     shutil.copytree(REAL_CODE_DIRECTORY, CLONE_CODE_DIRECTORY)
 
@@ -61,8 +63,6 @@ def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Opti
     print("\n")
     print("Total Real Code File Size:",total_real_filesize,"MB")
     print("Compressed Code File Size:",total_filesize_difference,"MB")
-
-print(sys.argv)
 
 if(len(sys.argv) >= 3):
     OptimizeCode(sys.argv[1],sys.argv[2])
