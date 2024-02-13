@@ -52,6 +52,7 @@ def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Opti
     total_compressed_filesize = total_compressed_html_file_size + total_compressed_css_file_size + total_compressed_js_file_size
     total_filesize_difference = total_real_filesize - total_compressed_filesize
 
+    print("\n")
     print("Real HTML File Size:",total_html_file_size,"MB")
     print("Real CSS File Size:",total_css_file_size,"MB")
     print("Real JS File Size:",total_js_file_size,"MB")
@@ -59,10 +60,10 @@ def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Opti
     print("Compressed HTML File Size:",total_compressed_html_file_size,"MB")
     print("Compressed CSS File Size:",total_compressed_css_file_size,"MB")
     print("Compressed JS File Size:",total_compressed_js_file_size,"MB")
-    print("Total Compressed File Size:",total_compressed_filesize,"MB")
     print("\n")
+    print("Total Compressed File Size:",total_compressed_filesize,"MB")
     print("Total Real Code File Size:",total_real_filesize,"MB")
-    print("Compressed Code File Size:",total_filesize_difference,"MB")
+    print("File Size Reduction:",total_filesize_difference,"MB")
 
 if(len(sys.argv) >= 3):
     OptimizeCode(sys.argv[1],sys.argv[2])
