@@ -5,7 +5,7 @@ import shutil
 import sys
 
 
-def OptimizeCode(REAL_CODE_DIRECTORY=r"./website/",CLONE_CODE_DIRECTORY=r"./Optimized Code/"):
+def OptimizeCode(REAL_CODE_DIRECTORY,CLONE_CODE_DIRECTORY):
 
     if os.path.isdir(REAL_CODE_DIRECTORY) == False:
         print(REAL_CODE_DIRECTORY+" Directory Not Exists")
