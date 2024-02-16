@@ -10,7 +10,22 @@ import sys
 def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Optimized Code/",
                     images_extentions=('.png', '.jpeg', '.jpg', '.gif'), COMPRESS_HTML=True, COMPRESS_CSS=True,
                     COMPRESS_JS=True, OPTIMIZE_HTML_IMAGE_CODE=True, COMPRESS_IMAGE=False):
-    global JS_COMPRESS_ERROR, JS_COMPRESS_ERROR, HTML_READ_ERROR, CODE_IMAGE_OPTIMIZED
+    global JS_COMPRESS_ERROR, HTML_READ_ERROR, CODE_IMAGE_OPTIMIZED
+
+    HTML_COMPRESS_ERROR = False
+    CSS_COMPRESS_ERROR = False
+    CODE_IMAGE_OPTIMIZED = False
+    
+    images_not_found = []
+    images_used = []
+    images_not_used = []
+
+    total_html_file_size = 0
+    total_css_file_size = 0
+    total_js_file_size = 0
+    space_free = 0
+    not_used_images = []
+
     try:
         shutil.rmtree(CLONE_CODE_DIRECTORY)
     except:
@@ -35,15 +50,6 @@ def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Opt
                  filename.endswith(('.html'))]
     all_images = list(set(all_images))
 
-    images_not_found = []
-    images_used = []
-    images_not_used = []
-
-    total_html_file_size = 0
-    total_css_file_size = 0
-    total_js_file_size = 0
-
-    HTML_COMPRESS_ERROR = False
 
     if COMPRESS_HTML:
         print("Compressing HTML Files...")
@@ -55,7 +61,6 @@ def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Opt
             HTML_COMPRESS_ERROR = True
             print("HTML ERROR", e, file=sys.stderr)
 
-    CSS_COMPRESS_ERROR = False
 
     if COMPRESS_CSS:
         print("Compressing CSS Files...")
@@ -97,8 +102,7 @@ def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Opt
             HTML_READ_ERROR = True
             print("HTML READING ERROR: ", e, file=sys.stderr)
 
-        space_free = 0
-        not_used_images = []
+
         if not HTML_READ_ERROR and OPTIMIZE_HTML_IMAGE_CODE:
             images_used = list(set(images_used))
             images_not_found = list(set(images_not_found))
@@ -113,7 +117,6 @@ def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Opt
             print("Extra Images - ", len(not_used_images), not_used_images)
             print("Extra Images Total Size - ", space_free, "MB")
 
-        CODE_IMAGE_OPTIMIZED = False
         if space_free != 0:
             is_delete = input("Do you want to Delete Extra Images? Free up - " + str(space_free) + " MB \n Yes/No : ")
             if is_delete.lower() == "yes":
