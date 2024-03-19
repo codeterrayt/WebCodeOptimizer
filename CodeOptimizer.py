@@ -8,7 +8,7 @@ import sys
 
 
 def OptimizeProject(REAL_CODE_DIRECTORY=r"./code/", CLONE_CODE_DIRECTORY=r"./Optimized Code/",
-                    images_extentions=('.png', '.jpeg', '.jpg', '.gif'), COMPRESS_HTML=True, COMPRESS_CSS=True,
+                    images_extentions=('.png', '.jpeg', '.jpg', '.gif','.webp'), COMPRESS_HTML=True, COMPRESS_CSS=True,
                     COMPRESS_JS=True, OPTIMIZE_HTML_IMAGE_CODE=True, COMPRESS_IMAGE=False):
     global JS_COMPRESS_ERROR, HTML_READ_ERROR, CODE_IMAGE_OPTIMIZED
 
