@@ -1,0 +1,4 @@
+beautifulsoup4==4.12.3
+bs4==0.0.2
+css-html-js-minify==2.5.5
+soupsieve==2.6

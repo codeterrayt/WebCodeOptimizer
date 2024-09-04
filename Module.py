@@ -162,17 +162,3 @@ class ProjectOptimizer:
             print("HTML READING ERROR: ", e, file=sys.stderr)
             return False
 
-
-test = ProjectOptimizer(r"./code/", r"./optimized/")
-
-test.CreateClone()
-test.FindAllHTML()
-test.FindAllJS()
-test.FindAllCSS()
-test.FindImagesInProjectHTML()
-test.RemoveUnUsedImages()
-test.CompressHTML()
-test.CompressJS()
-test.CompressCSS()
-
-
